@@ -119,4 +119,11 @@ class Api::ApiController < ActionController::Base
     fail "automatic response method '%s' not defined" % method_name unless respond_to?(method_name, true)
     return send(method_name, options)
   end
+
+  # trigger dynflow action and return the dynflow task object
+  def async_task(action, *args)
+    uuid, _ = Orchestrate.trigger(action, *args)
+    return DynflowTask.find_by_uuid!(uuid)
+  end
+
 end
