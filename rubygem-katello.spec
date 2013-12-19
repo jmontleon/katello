@@ -19,7 +19,7 @@ Summary: Katello
 Name: %{?scl_prefix}rubygem-%{gem_name}
 
 Version: 1.5.0
-Release: 9%{dist}
+Release: 10%{dist}
 Group: Development/Ruby
 License: Distributable
 URL: http://www.katello.org
@@ -184,6 +184,195 @@ GEMFILE
 %{gem_dir}/doc/%{gem_name}-%{version}
 
 %changelog
+* Thu Dec 19 2013 Jason Montleon <jmontleo@redhat.com> 1.5.0-10
+- fix releasers and other internal stuff (jmontleo@redhat.com)
+- Merge pull request #3517 from waldenraines/move-system-groups
+  (walden@redhat.com)
+- Bastion: moving system groups to its own tab. (walden@redhat.com)
+- Build: Removing rubygem-logger since that appears to be unused, adding
+  ruby193-ruby-wrapper to RHEL6 comps and missing commonjs for less-rails.
+  (ehelms@redhat.com)
+- Adding missing less-rails dependency and removing katello-common which is no
+  longer built or required. (ehelms@redhat.com)
+- remove packages that are unnecessary for katello-engine (jmontleo@redhat.com)
+- Removing duplicate in_environment scope (daviddavis@redhat.com)
+- Merge pull request #3519 from thomasmckay/scope-app (thomasmckay@redhat.com)
+- scope-app - add Katello:: to all ApplicationController
+  (thomasmckay@redhat.com)
+- Merge pull request #3512 from jmontleon/use-rhscl (ericdhelms@gmail.com)
+- Merge pull request #3515 from waldenraines/fix-karma (walden@redhat.com)
+- Merge pull request #3516 from beav/katello-debug (cduryee@redhat.com)
+- Bastion: remove unused infinite scroll include path from karma config.
+  (walden@redhat.com)
+- Automatic commit of package [rubygem-katello] minor release [1.5.0-9].
+  (jmontleo@redhat.com)
+- Changes to support Katello engine RPM builds (jmontleo@redhat.com)
+- add enhanced reporting logs to katello-debug (cduryee@redhat.com)
+- Merge pull request #3513 from daviddavis/temp/20131216104958
+  (daviddavis@redhat.com)
+- Merge pull request #3510 from mkelley33/readme-grunt-bower-task
+  (michauxkelley@gmail.com)
+- Reorganize dependency errors section of README (michauxkelley@gmail.com)
+- Creating a katello.local.rb for development (daviddavis@redhat.com)
+- remove packages available via rhscl (jmontleo@redhat.com)
+- Engine: Renaming localized gemfile to something less generic
+  (daviddavis@redhat.com)
+- Merge pull request #3483 from komidore64/system-api-v2 (komidore64@gmail.com)
+- Merge pull request #3507 from ehelms/update-readme (ericdhelms@gmail.com)
+- Engine: Fixing katello_dev gem echo statement (daviddavis@redhat.com)
+- API v2 - v2 systems_controller w/ create, index, and show
+  (komidore64@gmail.com)
+- Merge pull request #3506 from jmontleon/version-fix (ericdhelms@gmail.com)
+- Fixing inconsistency in setup workflow. (ericdhelms@gmail.com)
+- Merge pull request #3469 from ehelms/allow-development-gems
+  (ericdhelms@gmail.com)
+- Merge pull request #3497 from mkelley33/fix-product-namespacing
+  (michauxkelley@gmail.com)
+- change version to 1.5.0 for next release (jmontleo@redhat.com)
+- Allows development gems to be declared that can be ignored in production mode
+  by bundler. (ericdhelms@gmail.com)
+- add locale directory to gem.files (jmontleo@redhat.com)
+- Merge pull request #3459 from ehelms/remove-travis (ericdhelms@gmail.com)
+- Merge pull request #3484 from domcleal/no-puppet (ericdhelms@gmail.com)
+- Merge pull request #3501 from daviddavis/temp/20131212153148
+  (daviddavis@redhat.com)
+- Bastion: enabling jshint whitespace detection. (daviddavis@redhat.com)
+- Merge pull request #3493 from bbuckingham/fix-rabl-namespacing
+  (bbuckingham@redhat.com)
+- Merge pull request #3500 from jlsherrill/fontawesome (jlsherrill@gmail.com)
+- Fixing error @FontAwesomePath undefined (jsherril@redhat.com)
+- Removing Travis configs and scripts as we rely on the Foreman CI
+  infrastructure. (ericdhelms@gmail.com)
+- Merge pull request #3486 from parthaa/ng-upload (parthaa@gmail.com)
+- Merge pull request #3478 from jlsherrill/selectall2 (jlsherrill@gmail.com)
+- Remove obsolete Puppet/Facter installation references (dcleal@redhat.com)
+- Converting system group bulk action to new select all (jsherril@redhat.com)
+- Update ngUpload to latest (paji@redhat.com)
+- Fix namespacing in Katello::Authorization::Product (michauxkelley@gmail.com)
+- Bastion: fix @include causing asset compilation to fail, fixes #3495.
+  (walden@redhat.com)
+- Merge pull request #3491 from jlsherrill/pool (jlsherrill@gmail.com)
+- Merge pull request #3492 from jlsherrill/enable_repos (jlsherrill@gmail.com)
+- Merge pull request #3470 from mptap/readme_update (mtapaswi@redhat.com)
+- Adding an optional gmail-style select all to nutupane (jsherril@redhat.com)
+- Merge pull request #3489 from mkelley33/katello-namespace-provider
+  (michauxkelley@gmail.com)
+- Engine: add anemone to katello.rb (bbuckingham@redhat.com)
+- Engine: rabl: add Katello namespacing to Util::Data references
+  (bbuckingham@redhat.com)
+- fixing some instances of ::Pool (jsherril@redhat.com)
+- allow user requests to modify enabled repos (jsherril@redhat.com)
+- Merge pull request #3488 from bkearney/bkearney/devsetup-docs
+  (bryan.kearney@gmail.com)
+- Merge pull request #3487 from bkearney/bkearney/root_v2_support
+  (bryan.kearney@gmail.com)
+- Merge pull request #3481 from ehelms/grunt-bower (ericdhelms@gmail.com)
+- Merge pull request #3490 from ehelms/remove-unused-class
+  (ericdhelms@gmail.com)
+- Removing unused css class 'clickable'. (ericdhelms@gmail.com)
+- Add Katello namespace to Authorization::Provider (michauxkelley@gmail.com)
+- Update the docs for installation. (bkearney@redhat.com)
+- Add full namespacing so I can call /katello/api/v2 (bkearney@redhat.com)
+- Bastion: Adds Grunt task to pick the proper library files for each JavaScript
+  library defined in bower.json in order to check the minimal amount of third
+  party libraries into source control. (ericdhelms@gmail.com)
+- paging-results - system groups apipie (thomasmckay@redhat.com)
+- Merge pull request #3467 from bbuckingham/engine-orgs-deface
+  (bbuckingham@redhat.com)
+- Merge pull request #3477 from iNecas/katello-apipie (komidore64@gmail.com)
+- Merge pull request #3476 from jlsherrill/3454 (jlsherrill@gmail.com)
+- Merge pull request #3364 from beav/comps (jlsherrill@gmail.com)
+- Merge pull request #3471 from daviddavis/temp/20131206185141
+  (daviddavis@redhat.com)
+- Serve Katello api documentation on '/apidoc` when Katello is loaded
+  (inecas@redhat.com)
+- Merge pull request #3475 from bbuckingham/fix-registration
+  (bbuckingham@redhat.com)
+- Engine: API: fix issue with resource_list for api_version in resource
+  (bbuckingham@redhat.com)
+- Engine: UI: Fix the Sync Now on Repositories (bbuckingham@redhat.com)
+- Engine: ignore api_version during auth rules checking
+  (bbuckingham@redhat.com)
+- Merge pull request #3473 from thomasmckay/rabl-results
+  (thomasmckay@redhat.com)
+- rabl-results - do not wrap outer collection (thomasmckay@redhat.com)
+- Engine: Removing old gem files (daviddavis@redhat.com)
+- Update to Engine Setup Readme (mtapaswi@redhat.com)
+- Merge pull request #3466 from mkelley33/dry-up-subscriptions
+  (michauxkelley@gmail.com)
+- Engine: Organization: deface core UI to include katello attributes
+  (bbuckingham@redhat.com)
+- DRY up use of redhat_provider with @provider instead
+  (michauxkelley@gmail.com)
+- Engine: address PR 3463 comments from unifying to single Organization
+  (bbuckingham@redhat.com)
+- Engine: organization_extensions: fix rubocop complaint
+  (bbuckingham@redhat.com)
+- Engine: regenerate VCR cassettes after moving to unified org
+  (bbuckingham@redhat.com)
+- Engine: Organization: fixing tests to support core org with katello
+  extensions (bbuckingham@redhat.com)
+- Engine: Organization: updates so that katello org is an extension of the
+  core's org (bbuckingham@redhat.com)
+- Merge pull request #3462 from komidore64/post-rebase-ping2
+  (komidore64@gmail.com)
+- Merge pull request #3458 from ehelms/engine-font-fix (ericdhelms@gmail.com)
+- Merge pull request #3460 from mkelley33/subscriptions-widget
+  (michauxkelley@gmail.com)
+- moar tests!! (komidore64@gmail.com)
+- removing minitest skips (komidore64@gmail.com)
+- attempt at disabling headpin tests and fixing ping tests
+  (komidore64@gmail.com)
+- API v2 - switch from templates inside templates to layouts
+  (komidore64@gmail.com)
+- API v2 - ping controller no longer extends v1 controllers
+  (komidore64@gmail.com)
+- API v2 - /api/status (komidore64@gmail.com)
+- this route is actually /status (komidore64@gmail.com)
+- API v2 - renaming common resource templates to match rendering.rb
+  (komidore64@gmail.com)
+- API v2 - fixing bad merge-conflict resolution (komidore64@gmail.com)
+- API v2 - ping controller and /api/ping route (komidore64@gmail.com)
+- api v2 root-node for single-object responses (komidore64@gmail.com)
+- Add subscription totals portlet to the dashboard (michauxkelley@gmail.com)
+- fixing tests that check for api routes (komidore64@gmail.com)
+- API v2 - actually let's just extend foreman's constraints since they're the
+  same (komidore64@gmail.com)
+- changing :apiv to :api_version (komidore64@gmail.com)
+- attempting to fix busted test:
+  Katello::Api::V1::UsersControllerTest.test_list_owners_username
+  (komidore64@gmail.com)
+- API v2 - switching two /blah/ regexs to %%r{blah} (komidore64@gmail.com)
+- API v2 - specify API version via headers or in url (komidore64@gmail.com)
+- Merge pull request #3456 from daviddavis/temp/20131204071804
+  (daviddavis@redhat.com)
+- Engine: Fixing lint problems detected by rubocop (daviddavis@redhat.com)
+- Merge pull request #3449 from ehelms/engine-checkstyle
+  (daviddavis@redhat.com)
+- Merge pull request #3435 from jlsherrill/engine_update (jlsherrill@gmail.com)
+- Engine: Adding Rubocop code style checker for better Jenkins output.
+  (ericdhelms@gmail.com)
+- fixes 3454 - changing default in UI to publish via http (jsherril@redhat.com)
+- Engine: Fixes font pathing issues within RCUE library. (ericdhelms@gmail.com)
+- Merge pull request #3442 from ehelms/engine-rubocop (ericdhelms@gmail.com)
+- Merge pull request #3439 from waldenraines/engine-templates
+  (walden@redhat.com)
+- Merge pull request #3443 from ehelms/engine-forms (ericdhelms@gmail.com)
+- Bastion: fixing issue with template URLs post engine. (walden@redhat.com)
+- Merge pull request #3440 from jlsherrill/ditch_ruport_engine
+  (jlsherrill@gmail.com)
+- Bastion: Updating forms to Bootstrap3 styling and encapsulating the basic
+  structure into directives. (ericdhelms@gmail.com)
+- Merge pull request #3433 from ehelms/engine-fix-table-scroll
+  (ericdhelms@gmail.com)
+- Engine: Fixes #3374: Adds a rake task to run rubocop and updates to passing
+  status. (ericdhelms@gmail.com)
+- Adding temporary custom replacement for ruport (jsherril@redhat.com)
+- Engine: include only needed sub-engine files (jsherril@redhat.com)
+- Bastion: Fixes issue with table headers not being frozen on initial page
+  load. (ericdhelms@gmail.com)
+- comps updates to add ceilometer_katello_dispatcher (cduryee@redhat.com)
+
 * Mon Dec 16 2013 Jason Montleon <jmontleo@redhat.com> 1.5.0-9
 - Tag rubygem-katello-1.5.0-9 
 
