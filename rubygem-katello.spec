@@ -15,6 +15,16 @@
 %global gem_docdir %{gem_dir}/doc/%{gem_name}-%{version}
 %endif
 
+%if "%{?scl}" == "ruby193"
+    %global scl_ruby /usr/bin/ruby193-ruby
+    %global scl_rake /usr/bin/ruby193-rake
+    ### TODO temp disabled for SCL
+    %global nodoc 1
+%else
+    %global scl_ruby /usr/bin/ruby
+    %global scl_rake /usr/bin/rake
+%endif
+
 Summary: Katello
 Name: %{?scl_prefix}rubygem-%{gem_name}
 
@@ -134,6 +144,7 @@ Requires: %{?scl_prefix}rubygem-haml-rails
 Requires: %{?scl_prefix}rubygem-ui_alchemy-rails = 1.0.12
 Requires: %{?scl_prefix}rubygem-deface
 BuildRequires: %{?scl_prefix}rubygems
+BuildRequires: foreman
 BuildArch: noarch
 Provides: rubygem(katello) = %{version}
 
@@ -156,6 +167,24 @@ gem install --local --install-dir .%{gem_dir} --force %{SOURCE0}
 %{?scl:"}
 
 %build
+pushd %{foreman_dir}
+
+ls -la
+touch %{foreman_bundlerd_dir}/%{gem_name}.rb
+echo "group :katello do" >> %{foreman_bundlerd_dir}/%{gem_name}.rb
+echo "gem '%{gem_name}'" >> %{foreman_bundlerd_dir}/%{gem_name}.rb
+echo "gem 'sass-rails'" >> %{foreman_bundlerd_dir}/%{gem_name}.rb
+echo "end"  >> %{foreman_bundlerd_dir}/%{gem_name}.rb
+
+ls -la bundler.d
+
+export BUNDLER_EXT_NOSTRICT=1
+export BUNDLER_EXT_GROUPS="default assets katello"
+%{scl_rake} -T
+%{scl_rake} assets:precompile:katello RAILS_ENV=production --trace
+
+rm %{foreman_bundlerd_dir}/%{gem_name}.rb
+popd
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
