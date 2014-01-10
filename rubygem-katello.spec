@@ -167,7 +167,9 @@ gem install --local --install-dir .%{gem_dir} --force %{SOURCE0}
 %{?scl:"}
 
 %build
-pushd %{foreman_dir}
+mkdir ./usr/share
+cp -r %{foreman_dir} ./usr/share
+pushd ./usr/share/foreman
 
 ls -la
 touch %{foreman_bundlerd_dir}/%{gem_name}.rb
@@ -183,8 +185,9 @@ export BUNDLER_EXT_GROUPS="default assets katello"
 %{scl_rake} -T
 %{scl_rake} assets:precompile:katello RAILS_ENV=production --trace
 
-rm %{foreman_bundlerd_dir}/%{gem_name}.rb
 popd
+
+rm -rf ./usr
 
 %install
 mkdir -p %{buildroot}%{gem_dir}
